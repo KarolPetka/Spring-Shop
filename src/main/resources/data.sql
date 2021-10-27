@@ -1,0 +1,1 @@
+INSERT INTO product (name, quantity, description, file_location) VALUES ('Karo', 23, 'Best corn syrup You can get!', './uploads/products/1000-karo.jpg'), ('Doritos', 15, 'Only Doritos I can have is Doritos Days', ''), ('Pizza', 7, '', './uploads/products/1001-pizza.jpg')
