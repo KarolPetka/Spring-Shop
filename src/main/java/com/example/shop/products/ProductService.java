@@ -1,7 +1,9 @@
 package com.example.shop.products;
 
 import com.example.shop.exception.FileStorageException;
+import com.example.shop.exception.ProductNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -44,7 +46,10 @@ public class ProductService {
         productRepository.save(product);
     }
 
-    public void deleteProduct(String name) {
-
+    public ResponseEntity<String> deleteProduct(String name) {
+        if (productRepository.findProductUsingName(name) != null) {
+            productRepository.deleteProductByName(name);
+            return ResponseEntity.ok().body("Succesfuly deleted product with name " + name);
+        } else throw new ProductNotFoundException("Could not find product with name " + name + " to delete");
     }
 }
