@@ -24,8 +24,8 @@ public class ProductController {
     }
 
     @PostMapping("/add")
-    public void postProduct(@RequestParam("name") String name, @RequestParam("quantity") int quantity, @RequestParam("description") String description, @RequestParam("file") MultipartFile file) {
-        productService.postProduct(name, quantity, description, file);
+    public ResponseEntity<String> postProduct(@RequestParam("name") String name, @RequestParam("quantity") int quantity, @RequestParam("description") String description, @RequestParam("file") MultipartFile file) {
+        return productService.postProduct(name, quantity, description, file);
     }
 
     @DeleteMapping(path = "/{name}")

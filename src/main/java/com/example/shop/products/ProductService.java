@@ -29,7 +29,7 @@ public class ProductService {
         return productRepository.findAll();
     }
 
-    public void postProduct(String name, int quantity, String description, MultipartFile file) {
+    public ResponseEntity<String> postProduct(String name, int quantity, String description, MultipartFile file) {
         String fileName = "";
 
         if (file.getSize() > 0) {
@@ -44,6 +44,7 @@ public class ProductService {
 
         Product product = new Product(name, quantity, description, fileName.equals("") ? fileName : targetLocation + "/" + fileName);
         productRepository.save(product);
+        return ResponseEntity.ok().body("Succesfuly added product with name " + name);
     }
 
     public ResponseEntity<String> deleteProduct(String name) {
