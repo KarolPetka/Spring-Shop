@@ -28,9 +28,9 @@ public class ProductService {
     }
 
     public void postProduct(String name, int quantity, String description, MultipartFile file) {
-        String fileName = null;
+        String fileName = "";
 
-        if (file != null) {
+        if (file.getSize() > 0) {
             Random random = new Random();
             fileName = StringUtils.cleanPath(random.nextInt(10000) + "-" + file.getOriginalFilename());
             try {
@@ -40,7 +40,7 @@ public class ProductService {
             }
         }
 
-        Product product = new Product(name, quantity, description, targetLocation + "/" + fileName);
+        Product product = new Product(name, quantity, description, fileName.equals("") ? fileName : targetLocation + "/" + fileName);
         productRepository.save(product);
     }
 }
