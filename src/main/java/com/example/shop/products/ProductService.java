@@ -44,13 +44,13 @@ public class ProductService {
 
         Product product = new Product(name, quantity, description, fileName.equals("") ? fileName : targetLocation + "/" + fileName);
         productRepository.save(product);
-        return ResponseEntity.ok().body("Succesfuly added product with name " + name);
+        return ResponseEntity.ok().body("Successfully added product with name " + name);
     }
 
     public ResponseEntity<String> deleteProduct(String name) {
         if (productRepository.findProductUsingName(name) != null) {
             productRepository.deleteProductByName(name);
-            return ResponseEntity.ok().body("Succesfuly deleted product with name " + name);
+            return ResponseEntity.ok().body("Successfully deleted product with name " + name);
         } else throw new ProductNotFoundException("Could not find product with name " + name + " to delete");
     }
 }
