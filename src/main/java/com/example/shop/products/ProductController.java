@@ -30,6 +30,6 @@ public class ProductController {
 
     @DeleteMapping(path = "/{name}")
     public void deleteProduct(@PathVariable String name) {
-
+        productService.deleteProduct(name);
     }
 }

@@ -43,4 +43,8 @@ public class ProductService {
         Product product = new Product(name, quantity, description, fileName.equals("") ? fileName : targetLocation + "/" + fileName);
         productRepository.save(product);
     }
+
+    public void deleteProduct(String name) {
+
+    }
 }
