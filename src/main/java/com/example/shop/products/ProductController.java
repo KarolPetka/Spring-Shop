@@ -1,10 +1,8 @@
 package com.example.shop.products;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -25,7 +23,7 @@ public class ProductController {
     }
 
     @PostMapping("/add")
-    public void postProduct() {
-        productService.postProduct();
+    public void postProduct(@RequestParam("name") String name, @RequestParam("quantity") int quantity, @RequestParam("description") String description, @RequestParam("file") MultipartFile file) {
+        productService.postProduct(name, quantity, description, file);
     }
 }
