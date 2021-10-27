@@ -26,6 +26,6 @@ public class ProductController {
 
     @PostMapping("/add")
     public void postProduct() {
-
+        productService.postProduct();
     }
 }
