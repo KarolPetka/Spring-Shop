@@ -21,6 +21,8 @@ public class EmployeeService {
     }
 
     public ResponseEntity<String> postEmployee(String name, String surname, String position) {
-        return ResponseEntity.status(500).body("Method not implemented");
+        Employee employee = new Employee(name, surname, position);
+        employeeRepository.save(employee);
+        return ResponseEntity.ok().body("Employee add to database");
     }
 }
