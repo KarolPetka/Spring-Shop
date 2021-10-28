@@ -15,8 +15,8 @@ public class Store {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name", nullable = false)
-    private String name;
+    @Column(name = "location", nullable = false)
+    private String location;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "storeId", referencedColumnName = "id")
@@ -25,14 +25,14 @@ public class Store {
     public Store() {
     }
 
-    public Store(String name, List<Employee> employees) {
-        this.name = name;
+    public Store(String location, List<Employee> employees) {
+        this.location = location;
         this.employees = employees;
     }
 
-    public Store(Long id, String name, List<Employee> employees) {
+    public Store(Long id, String location, List<Employee> employees) {
         this.id = id;
-        this.name = name;
+        this.location = location;
         this.employees = employees;
     }
 
@@ -44,12 +44,12 @@ public class Store {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getLocation() {
+        return location;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     public List<Employee> getEmployees() {
