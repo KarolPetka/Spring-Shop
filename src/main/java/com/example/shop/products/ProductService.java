@@ -1,7 +1,7 @@
 package com.example.shop.products;
 
-import com.example.shop.exception.FileStorageException;
-import com.example.shop.exception.ProductNotFoundException;
+import com.example.shop.exceptions.FileStorageException;
+import com.example.shop.exceptions.ProductNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;

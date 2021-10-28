@@ -1,4 +1,4 @@
-package com.example.shop.exception;
+package com.example.shop.exceptions;
 
 public class FileStorageException extends RuntimeException{
 
