@@ -24,6 +24,6 @@ public class EmployeeController {
 
     @PostMapping("/add")
     public ResponseEntity<String> postEmployee(@RequestParam("name") String name, @RequestParam("surname") String surname, @RequestParam("position") String position) {
-        return ResponseEntity.status(500).body("Method not implemented");
+        return employeeService.postEmployee(name, surname, position);
     }
 }
