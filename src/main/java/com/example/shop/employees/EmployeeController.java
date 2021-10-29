@@ -26,4 +26,10 @@ public class EmployeeController {
     public ResponseEntity<String> postEmployee(@RequestParam("name") String name, @RequestParam("surname") String surname, @RequestParam("position") String position) {
         return employeeService.postEmployee(name, surname, position);
     }
+
+    @DeleteMapping("/{employeeId}")
+    public ResponseEntity<String> deleteStore(@PathVariable Long employeeId) {
+        return employeeService.deleteStore(employeeId);
+    }
+
 }
