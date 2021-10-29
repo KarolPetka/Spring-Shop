@@ -1,6 +1,7 @@
 package com.example.shop.stores;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,5 +18,11 @@ public class StoreService {
 
     public List<Store> getStores() {
         return storeRepository.findAll();
+    }
+
+    public ResponseEntity<String> postStore(String location) {
+        Store store = new Store(location);
+        storeRepository.save(store);
+        return ResponseEntity.ok().body("Store added to database");
     }
 }
