@@ -1,5 +1,6 @@
 package com.example.shop.stores;
 
+import com.example.shop.exceptions.StoreNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -24,5 +25,12 @@ public class StoreService {
         Store store = new Store(location);
         storeRepository.save(store);
         return ResponseEntity.ok().body("Store added to database");
+    }
+
+    public ResponseEntity<String> deleteStore(Long storeId) {
+        if (storeRepository.findById(storeId).isPresent()) {
+            storeRepository.deleteById(storeId);
+            return ResponseEntity.ok().body("Successfully deleted store with id " + storeId);
+        } else throw new StoreNotFoundException("Could not find store with id " + storeId + " to delete");
     }
 }

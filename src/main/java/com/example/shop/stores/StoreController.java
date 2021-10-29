@@ -26,4 +26,9 @@ public class StoreController {
     public ResponseEntity<String> postStore(@RequestParam("location") String location) {
         return storeService.postStore(location);
     }
+
+    @DeleteMapping("/{storeId}")
+    public ResponseEntity<String> deleteStore(@PathVariable Long storeId) {
+        return storeService.deleteStore(storeId);
+    }
 }
