@@ -34,7 +34,7 @@ public class ProductService {
 
         if (file.getSize() > 0) {
             Random random = new Random();
-            fileName = StringUtils.cleanPath(random.nextInt(10000) + "-" + file.getOriginalFilename());
+            fileName = StringUtils.cleanPath(file.getOriginalFilename() == null ? String.valueOf(random.nextInt(10000)) : file.getOriginalFilename());
             try {
                 Files.write(Paths.get(targetLocation).resolve(fileName), file.getBytes());
             } catch (IOException ex) {
