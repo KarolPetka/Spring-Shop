@@ -28,9 +28,9 @@ public class StoreService {
     }
 
     public ResponseEntity<String> deleteStore(Long storeId) {
-        if (storeRepository.findById(storeId).isPresent()) {
             storeRepository.deleteById(storeId);
+        if (storeRepository.findById(storeId).isPresent()) {
             return ResponseEntity.ok().body("Successfully deleted store with id " + storeId);
-        } else throw new StoreNotFoundException("Could not find store with id " + storeId + " to delete");
+        } else return ResponseEntity.status(500).body("Could not find store with id " + storeId + " to delete");
     }
 }
