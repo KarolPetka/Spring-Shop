@@ -54,7 +54,7 @@ class StoreServiceTest {
         Store store = new Store(1L, "USA");
 
         //when
-        serviceTest.deleteStore(1L);
+        serviceTest.deleteStore(store.getId());
 
         //then
         verify(repositoryTest, times(1)).deleteById(store.getId());
