@@ -1,6 +1,5 @@
 package com.example.shop.employees;
 
-import com.example.shop.exceptions.EmployeeNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -28,9 +27,9 @@ public class EmployeeService {
     }
 
     public ResponseEntity<String> deleteStore(Long employeeId) {
-        if (employeeRepository.findById(employeeId).isPresent()) {
             employeeRepository.deleteById(employeeId);
+        if (employeeRepository.findById(employeeId).isPresent()) {
             return ResponseEntity.ok().body("Successfully deleted store with id " + employeeId);
-        } else throw new EmployeeNotFoundException("Could not find store with id " + employeeId + " to delete");
+        } else return ResponseEntity.status(500).body("Could not find store with id " + employeeId + " to delete");
     }
 }
