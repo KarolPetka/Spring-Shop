@@ -50,6 +50,6 @@ public class ProductService {
         productRepository.deleteProductByName(name);
         if (productRepository.findProductUsingName(name) != null) {
             return ResponseEntity.ok().body("Successfully deleted product with name " + name);
-        } else return ResponseEntity.status(500).body("Successfully deleted product with name " + name);
+        } else return ResponseEntity.status(500).body("No product with name " + name);
     }
 }
